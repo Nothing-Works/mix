@@ -1,19 +1,24 @@
 <template>
   <v-app>
-    <v-alert type="success">
-      I'm a success alert.
-    </v-alert>
+    <v-btn color="primary">Primary</v-btn>
+    <v-card
+    class="mx-auto"
+    max-width="344"
+    outlined
+  >
+    <v-list-item three-line>
+      <v-list-item-content>
+        <div class="overline mb-4">OVERLINE</div>
+        <v-list-item-title class="headline mb-1">Headline 5</v-list-item-title>
+        <v-list-item-subtitle>Greyhound divisely hello coldly fonwderfully</v-list-item-subtitle>
+      </v-list-item-content>
 
-    <v-alert type="info">
-      I'm an info alert.
-    </v-alert>
-
-    <v-alert type="warning">
-      I'm a warning alert.
-    </v-alert>
-
-    <v-alert type="error">
-      I'm an error alert.
-    </v-alert>
+      <v-list-item-avatar
+        tile
+        size="80"
+        color="grey"
+      ></v-list-item-avatar>
+    </v-list-item>
+  </v-card>
   </v-app>
 </template>
