@@ -1,0 +1,21 @@
+@import "~vuetify/src/styles/styles.sass";
+
+$btn-sizes: (
+    "default": 500,
+    "large": 200
+);
+
+$font-size-root: 140px;
+
+$material-light: map-merge(
+    $material-light,
+    (
+        cards: red
+    )
+);
+$material-dark: map-merge(
+    $material-dark,
+    (
+        cards: red
+    )
+);
