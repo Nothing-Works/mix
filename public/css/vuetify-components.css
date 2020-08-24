@@ -134,6 +134,7 @@
   flex: 1 1 auto;
   max-width: 100%;
   transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1) transform, 0.2s cubic-bezier(0.4, 0, 0.2, 1) background-color, 0.2s cubic-bezier(0.4, 0, 0.2, 1) left, 0.2s cubic-bezier(0.4, 0, 0.2, 1) right, 280ms cubic-bezier(0.4, 0, 0.2, 1) box-shadow, 0.25s cubic-bezier(0.4, 0, 0.2, 1) max-width, 0.25s cubic-bezier(0.4, 0, 0.2, 1) width;
+  position: relative;
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
 .v-toolbar .v-input {
@@ -3213,10 +3214,6 @@ img {
 /* Add the correct vertical alignment in Chrome, Firefox, and Opera */
 progress {
   vertical-align: baseline;
-}
-
-svg:not([fill]) {
-  fill: currentColor;
 }
 
 /* # =================================================================
@@ -18039,9 +18036,11 @@ html.overflow-y-hidden {
   content: "";
   display: inline-block;
   height: 100%;
+  left: 0;
   opacity: 0;
   pointer-events: none;
   position: absolute;
+  top: 0;
   transform: scale(1.3);
   width: 100%;
   transition: opacity 0.2s cubic-bezier(0.4, 0, 0.6, 1);
@@ -18504,7 +18503,7 @@ html.overflow-y-hidden {
   justify-content: center;
   align-items: center;
 }
-.v-progress-circular svg {
+.v-progress-circular > svg {
   width: 100%;
   height: 100%;
   margin: auto;
@@ -18515,7 +18514,7 @@ html.overflow-y-hidden {
   right: 0;
   z-index: 0;
 }
-.v-progress-circular--indeterminate svg {
+.v-progress-circular--indeterminate > svg {
   animation: progress-circular-rotate 1.4s linear infinite;
   transform-origin: center center;
   transition: all 0.2s ease-in-out;
@@ -19691,7 +19690,6 @@ html.overflow-y-hidden {
   pointer-events: none;
 }
 .v-menu-transition-enter-to .v-list-item {
-  pointer-events: auto;
   transition-delay: 0.1s;
 }
 .v-menu-transition-leave-active, .v-menu-transition-leave-to {
@@ -21492,13 +21490,21 @@ html.overflow-y-hidden {
   opacity: 0.8;
   padding: 0 12px;
 }
-.v-btn-toggle > .v-btn.v-btn:first-child {
+.v-application--is-ltr .v-btn-toggle > .v-btn.v-btn:first-child {
   border-top-left-radius: inherit;
   border-bottom-left-radius: inherit;
 }
-.v-btn-toggle > .v-btn.v-btn:last-child {
+.v-application--is-rtl .v-btn-toggle > .v-btn.v-btn:first-child {
   border-top-right-radius: inherit;
   border-bottom-right-radius: inherit;
+}
+.v-application--is-ltr .v-btn-toggle > .v-btn.v-btn:last-child {
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+.v-application--is-rtl .v-btn-toggle > .v-btn.v-btn:last-child {
+  border-top-left-radius: inherit;
+  border-bottom-left-radius: inherit;
 }
 .v-btn-toggle > .v-btn.v-btn--active {
   color: inherit;
@@ -21507,7 +21513,10 @@ html.overflow-y-hidden {
 .v-btn-toggle > .v-btn.v-btn:after {
   display: none;
 }
-.v-btn-toggle > .v-btn.v-btn:not(:first-child) {
+.v-application--is-ltr .v-btn-toggle > .v-btn.v-btn:not(:first-child) {
+  border-left-width: 0;
+}
+.v-application--is-rtl .v-btn-toggle > .v-btn.v-btn:not(:last-child) {
   border-left-width: 0;
 }
 .v-btn-toggle:not(.v-btn-toggle--dense) .v-btn.v-btn.v-size--default {
@@ -22326,6 +22335,10 @@ html.overflow-y-hidden {
 }
 .v-input--selection-controls:not(.v-input--hide-details) > .v-input__slot {
   margin-bottom: 12px;
+}
+.v-input--selection-controls .v-input__slot,
+.v-input--selection-controls .v-radio {
+  cursor: pointer;
 }
 .v-input--selection-controls .v-input__slot > .v-label,
 .v-input--selection-controls .v-radio > .v-label {
@@ -27138,7 +27151,6 @@ html.overflow-y-hidden {
   justify-content: flex-end;
 }
 .v-snack:not(.v-snack--has-background) .v-snack__wrapper {
-  background: transparent !important;
   box-shadow: none !important;
 }
 .v-snack--text .v-snack__wrapper:before {
@@ -28646,9 +28658,6 @@ html.overflow-y-hidden {
 .v-treeview-node.v-treeview-node--rounded .v-treeview-node__root {
   margin-top: 8px;
   margin-bottom: 8px;
-}
-.v-treeview-node--excluded {
-  display: none;
 }
 .v-treeview-node--click > .v-treeview-node__root,
 .v-treeview-node--click > .v-treeview-node__root > .v-treeview-node__content > * {
